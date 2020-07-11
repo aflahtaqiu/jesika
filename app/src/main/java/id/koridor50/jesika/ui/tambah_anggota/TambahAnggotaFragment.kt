@@ -1,21 +1,24 @@
 package id.koridor50.jesika.ui.tambah_anggota
 
+import android.content.Context
 import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
+import javax.inject.Inject
 
 class TambahAnggotaFragment : Fragment() {
 
-    companion object {
-        fun newInstance() =
-            TambahAnggotaFragment()
-    }
+   @Inject lateinit var viewModel: TambahAnggotaViewModel
 
-    private lateinit var viewModel: TambahAnggotaViewModel
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        (context.applicationContext as JesikaApp).component.inject(this)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,10 +27,9 @@ class TambahAnggotaFragment : Fragment() {
         return inflater.inflate(R.layout.tambah_anggota_fragment, container, false)
     }
 
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(TambahAnggotaViewModel::class.java)
-        // TODO: Use the ViewModel
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }
