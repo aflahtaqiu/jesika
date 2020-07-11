@@ -16,6 +16,6 @@
     </fragment>
     <activity
         android:id="@+id/mainActivity"
-        android:name="id.koridor50.jesika.MainActivity"
+        android:name="id.koridor50.jesika.ui.MainActivity"
         android:label="MainActivity" />
 </navigation>

@@ -1,7 +1,8 @@
-package id.koridor50.jesika
+package id.koridor50.jesika.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import id.koridor50.jesika.R
 
 class AuthActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

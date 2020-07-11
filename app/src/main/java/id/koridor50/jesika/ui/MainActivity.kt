@@ -1,13 +1,12 @@
-package id.koridor50.jesika
+package id.koridor50.jesika.ui
 
 import android.os.Bundle
 import android.view.View
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import id.koridor50.jesika.R
 
 class MainActivity : AppCompatActivity() {
 
