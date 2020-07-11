@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home">
+
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="id.koridor50.jesika.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_createGroupFragment"
+            app:destination="@id/createGroupFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_tambahAnggotaFragment"
+            app:destination="@id/tambahAnggotaFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/chatRoomFragment"
+        android:name="id.koridor50.jesika.ui.chat_room.ChatRoomFragment"
+        android:label="chat_room_fragment"
+        tools:layout="@layout/chat_room_fragment" >
+        <action
+            android:id="@+id/action_chatRoomFragment_to_memberListFragment"
+            app:destination="@id/memberListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="id.koridor50.jesika.ui.profile.ProfileFragment"
+        android:label="profile_fragment"
+        tools:layout="@layout/profile_fragment" >
+        <action
+            android:id="@+id/action_profileFragment_to_voucherListFragment"
+            app:destination="@id/voucherListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/createGroupFragment"
+        android:name="id.koridor50.jesika.ui.create_group.CreateGroupFragment"
+        android:label="create_group_fragment"
+        tools:layout="@layout/create_group_fragment" />
+    <fragment
+        android:id="@+id/tambahAnggotaFragment"
+        android:name="id.koridor50.jesika.ui.tambah_anggota.TambahAnggotaFragment"
+        android:label="tambah_anggota_fragment"
+        tools:layout="@layout/tambah_anggota_fragment" />
+    <fragment
+        android:id="@+id/memberListFragment"
+        android:name="id.koridor50.jesika.ui.member_list.MemberListFragment"
+        android:label="member_list_fragment"
+        tools:layout="@layout/member_list_fragment" />
+    <fragment
+        android:id="@+id/voucherListFragment"
+        android:name="id.koridor50.jesika.ui.voucher_list.VoucherListFragment"
+        android:label="voucher_list_fragment"
+        tools:layout="@layout/voucher_list_fragment" >
+        <action
+            android:id="@+id/action_voucherListFragment_to_redeemPromoFragment"
+            app:destination="@id/redeemPromoFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/redeemPromoFragment"
+        android:name="id.koridor50.jesika.ui.redeem_promo.RedeemPromoFragment"
+        android:label="redeem_promo_fragment"
+        tools:layout="@layout/redeem_promo_fragment" />
+</navigation>

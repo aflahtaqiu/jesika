@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Jesika</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="home">Home</string>
+    <string name="masuk">Masuk</string>
+    <string name="buat_group">Buat Group</string>
+    <string name="tambah_anggota">Tambah Anggota</string>
+    <string name="text_login">Silahkan masuk menggunakan akun yang sudah terdaftar pada JKN Mobile</string>
+    <string name="text_buat_group_baru">Tambahkan teman-teman di local community Anda dengan nomor Kartu Indonesia Sehat</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_login">Selamat Datang</string>
+</resources>
