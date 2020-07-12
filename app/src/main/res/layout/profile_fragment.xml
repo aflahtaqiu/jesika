@@ -225,6 +225,7 @@
                         android:layout_marginTop="32dp"
                         android:layout_marginEnd="32dp"
                         android:layout_marginRight="32dp"
+                        android:onClick="@{() -> fragment.logout()}"
                         android:text="Keluar"
                         android:textAllCaps="false"
                         android:textColor="@color/colorRedBelumLunasStatus"

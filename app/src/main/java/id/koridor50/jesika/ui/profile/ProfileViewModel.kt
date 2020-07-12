@@ -9,6 +9,7 @@ import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.Result
 import id.koridor50.jesika.data.repository.RemoteRepository
+import id.koridor50.jesika.utils.clearPref
 import id.koridor50.jesika.utils.getPrefInt
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -43,4 +44,7 @@ class ProfileViewModel @Inject constructor(private val repository: RemoteReposit
             }
         }
     }
+
+    fun clearPreference() = context.clearPref()
+
 }

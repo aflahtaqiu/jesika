@@ -38,6 +38,9 @@
         <action
             android:id="@+id/action_profileFragment_to_redeemPromoFragment"
             app:destination="@id/redeemPromoFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_authActivity"
+            app:destination="@id/authActivity" />
     </fragment>
     <fragment
         android:id="@+id/createGroupFragment"
@@ -72,4 +75,9 @@
         android:name="id.koridor50.jesika.ui.new_member.NewMemberFragment"
         android:label="new_member_fragment"
         tools:layout="@layout/new_member_fragment" />
+    <activity
+        android:id="@+id/authActivity"
+        android:name="id.koridor50.jesika.ui.AuthActivity"
+        android:label="activity_auth"
+        tools:layout="@layout/activity_auth" />
 </navigation>

@@ -56,4 +56,9 @@ class ProfileFragment : Fragment() {
     fun moveRedeemVoucher (idVoucher: Int) {
         findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToRedeemPromoFragment(idVoucher))
     }
+
+    fun logout () {
+        viewModel.clearPreference()
+        findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToAuthActivity())
+    }
 }
