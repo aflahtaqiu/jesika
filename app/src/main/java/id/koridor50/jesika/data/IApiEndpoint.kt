@@ -56,4 +56,9 @@ interface IApiEndpoint {
         @Field("user_id") idUser: Int,
         @Field("local_community_id") idLocalCommunity: Int
     ) : LocalCommunityUser
+
+    @GET("local_communities/{idLocalCommunity}}")
+    suspend fun getLocalCommunityMembers (
+        @Path("idLocalCommunity") idLocalCommunity: Int
+    ) : LocalCommunity
 }

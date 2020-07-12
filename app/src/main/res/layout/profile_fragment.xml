@@ -138,21 +138,21 @@
                         app:layout_constraintTop_toBottomOf="@+id/textView39" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="88dp"
-                        android:layout_height="28dp"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
-                        android:background="@drawable/box_green_corner"
+                        android:background="@{profile.isPaid ?  @drawable/box_green_corner : @drawable/box_red_corner}"
                         app:layout_constraintBottom_toBottomOf="@+id/textView40"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView40"
-                        app:layout_constraintVertical_bias="0.49">
+                        android:paddingVertical="4dp"
+                        android:paddingHorizontal="8dp">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Lunas"
-                            android:textColor="@color/colorGreenLunasStatus"
+                            android:text='@{profile.isPaid ?  "Lunas" : "Belum Lunas"}'
+                            android:textColor="@{profile.isPaid ?  @color/colorGreenLunasStatus : @color/colorRedBelumLunasStatus}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

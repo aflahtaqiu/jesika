@@ -124,5 +124,18 @@ class RemoteRepository @Inject constructor(
         }
         return liveData
     }
+
+    suspend fun getLocalCommunityMembers (idLocalCommunity: Int) : LiveData<Result<LocalCommunity>> {
+        val liveData = MutableLiveData<Result<LocalCommunity>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.getLocalCommunityMembers(idLocalCommunity)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
 }
 

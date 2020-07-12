@@ -1,7 +1,6 @@
 package id.koridor50.jesika.ui.chat_room
 
 import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -11,14 +10,15 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.auth.oauth2.ServiceAccountCredentials
 import com.google.cloud.dialogflow.v2.*
 import com.google.protobuf.Struct
 import com.tyagiabhinav.dialogflowchatlibrary.Chatbot.ChatbotBuilder
-import com.tyagiabhinav.dialogflowchatlibrary.ChatbotActivity
 import com.tyagiabhinav.dialogflowchatlibrary.ChatbotSettings
 import com.tyagiabhinav.dialogflowchatlibrary.networkutil.ChatbotCallback
 import com.tyagiabhinav.dialogflowchatlibrary.networkutil.TaskRunner
@@ -28,6 +28,7 @@ import com.tyagiabhinav.dialogflowchatlibrary.templateutil.OnClickCallback
 import com.tyagiabhinav.dialogflowchatlibrary.templateutil.ReturnMessage
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
+import id.koridor50.jesika.databinding.ChatRoomFragmentBinding
 import kotlinx.android.synthetic.main.chat_room_fragment.*
 import kotlinx.android.synthetic.main.chat_room_fragment.view.*
 import java.io.IOException
@@ -39,6 +40,7 @@ import javax.inject.Inject
 class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
 
     @Inject lateinit var viewModel: ChatRoomViewModel
+    private lateinit var binding: ChatRoomFragmentBinding
 
     private val TAG = "ChatRoomFragment"
     private val USER = 10001
@@ -64,12 +66,12 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.chat_room_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.chat_room_fragment, container, false)
         localCommunityId = 1
 
         settingChatbot()
-        initChatBot(view)
-        return view
+        initChatBot(binding.root)
+        return binding.root
     }
 
     private fun initChatBot(view: View) {
@@ -112,6 +114,8 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.fragment = this
     }
 
     fun settingChatbot() {
@@ -355,5 +359,13 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         queryEditText.isClickable = bool
         sendBtn.isEnabled = bool
         sendBtn.isClickable = bool
+    }
+
+    fun moveMemberList () {
+        findNavController().navigate(ChatRoomFragmentDirections.actionChatRoomFragmentToMemberListFragment())
+    }
+
+    fun popBackStack () {
+        findNavController().popBackStack()
     }
 }

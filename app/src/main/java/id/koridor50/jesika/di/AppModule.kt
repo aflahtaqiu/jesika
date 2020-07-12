@@ -91,7 +91,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideMemberListViewModel (repository: RemoteRepository) = MemberListViewModel(repository)
+    fun provideMemberListViewModel (repository: RemoteRepository, context: Context) =
+        MemberListViewModel(repository, context)
 
     @Provides
     @Singleton

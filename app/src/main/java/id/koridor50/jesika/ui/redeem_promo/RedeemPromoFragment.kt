@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
@@ -33,11 +34,11 @@ class RedeemPromoFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         binding.viewmodel = viewModel
+        binding.fragment = this
 
         val voucherArgs by navArgs<RedeemPromoFragmentArgs>()
 
@@ -50,5 +51,9 @@ class RedeemPromoFragment : Fragment() {
         viewModel.voucherLiveData.observe(viewLifecycleOwner, Observer {
             binding.voucher = it
         })
+    }
+
+    fun popBackStack () {
+        findNavController().popBackStack()
     }
 }

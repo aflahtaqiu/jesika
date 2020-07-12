@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
@@ -40,6 +41,8 @@ class NewMemberFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         binding.viewmodel = viewModel
+        binding.fragment = this
+
         adapter = NewMemberListAdapter()
 
         rvNewMemberIdentity.layoutManager = LinearLayoutManager(context)
@@ -50,4 +53,7 @@ class NewMemberFragment : Fragment() {
         })
     }
 
+    fun popBackStack () {
+        findNavController().popBackStack()
+    }
 }

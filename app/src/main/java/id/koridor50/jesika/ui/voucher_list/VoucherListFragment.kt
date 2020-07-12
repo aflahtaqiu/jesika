@@ -7,20 +7,22 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
 import id.koridor50.jesika.data.model.Voucher
+import id.koridor50.jesika.databinding.VoucherListFragmentBinding
 import kotlinx.android.synthetic.main.voucher_list_fragment.*
 import javax.inject.Inject
 
 class VoucherListFragment : Fragment(), VoucherListAdapter.VoucherListCallback {
 
    @Inject lateinit var viewModel: VoucherListViewModel
-
     private lateinit var adapter: VoucherListAdapter
+    private lateinit var binding: VoucherListFragmentBinding
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -31,13 +33,15 @@ class VoucherListFragment : Fragment(), VoucherListAdapter.VoucherListCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.voucher_list_fragment, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.voucher_list_fragment, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = VoucherListAdapter(this)
+        binding.fragment = this
 
         rvVoucherList.adapter = adapter
         rvVoucherList.layoutManager = GridLayoutManager(context, 2)
@@ -50,5 +54,9 @@ class VoucherListFragment : Fragment(), VoucherListAdapter.VoucherListCallback {
     override fun onVoucherClicked(idVoucher: Int) {
         findNavController().navigate(VoucherListFragmentDirections
             .actionVoucherListFragmentToRedeemPromoFragment(idVoucher))
+    }
+
+    fun popBackStack () {
+        findNavController().popBackStack()
     }
 }

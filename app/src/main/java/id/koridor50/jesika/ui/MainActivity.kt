@@ -16,6 +16,14 @@ class MainActivity : AppCompatActivity() {
         val navView: BottomNavigationView = findViewById(R.id.nav_view)
 
         val navController = findNavController(R.id.nav_host_fragment)
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            when(destination.id) {
+                R.id.navigation_home,
+                R.id.profileFragment -> showBottomNavigation(navView)
+
+                else -> hideBottomNavigation(navView)
+            }
+        }
         navView.setupWithNavController(navController)
     }
 
