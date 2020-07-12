@@ -3,13 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@id/chatRoomFragment">
 
     <fragment
         android:id="@+id/navigation_home"
         android:name="id.koridor50.jesika.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" >
+        tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_navigation_home_to_createGroupFragment"
             app:destination="@id/createGroupFragment" />
@@ -22,7 +22,7 @@
         android:id="@+id/chatRoomFragment"
         android:name="id.koridor50.jesika.ui.chat_room.ChatRoomFragment"
         android:label="chat_room_fragment"
-        tools:layout="@layout/chat_room_fragment" >
+        tools:layout="@layout/chat_room_fragment">
         <action
             android:id="@+id/action_chatRoomFragment_to_memberListFragment"
             app:destination="@id/memberListFragment" />
@@ -31,7 +31,7 @@
         android:id="@+id/profileFragment"
         android:name="id.koridor50.jesika.ui.profile.ProfileFragment"
         android:label="profile_fragment"
-        tools:layout="@layout/profile_fragment" >
+        tools:layout="@layout/profile_fragment">
         <action
             android:id="@+id/action_profileFragment_to_voucherListFragment"
             app:destination="@id/voucherListFragment" />
@@ -55,7 +55,7 @@
         android:id="@+id/voucherListFragment"
         android:name="id.koridor50.jesika.ui.voucher_list.VoucherListFragment"
         android:label="voucher_list_fragment"
-        tools:layout="@layout/voucher_list_fragment" >
+        tools:layout="@layout/voucher_list_fragment">
         <action
             android:id="@+id/action_voucherListFragment_to_redeemPromoFragment"
             app:destination="@id/redeemPromoFragment" />
