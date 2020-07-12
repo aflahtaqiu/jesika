@@ -36,6 +36,6 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         cvCreateGroup.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToCreateGroupFragment()) }
-        cvAddNewMember.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToTambahAnggotaFragment()) }
+        cvAddNewMember.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNewMemberFragment()) }
     }
 }

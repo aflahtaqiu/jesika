@@ -11,9 +11,9 @@ import id.koridor50.jesika.ui.create_group.CreateGroupViewModel
 import id.koridor50.jesika.ui.home.HomeViewModel
 import id.koridor50.jesika.ui.login.LoginViewModel
 import id.koridor50.jesika.ui.member_list.MemberListViewModel
+import id.koridor50.jesika.ui.new_member.NewMemberViewModel
 import id.koridor50.jesika.ui.profile.ProfileViewModel
 import id.koridor50.jesika.ui.redeem_promo.RedeemPromoViewModel
-import id.koridor50.jesika.ui.tambah_anggota.TambahAnggotaViewModel
 import id.koridor50.jesika.ui.voucher_list.VoucherListViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -103,9 +103,11 @@ class AppModule (private val app: Application) {
     fun provideRedeemPromoViewModel (repository: RemoteRepository,  context: Context) =
         RedeemPromoViewModel(repository, context)
 
+
     @Provides
     @Singleton
-    fun provideTambahAnggotaViewModel (repository: RemoteRepository) = TambahAnggotaViewModel(repository)
+    fun provideNewMemberViewModel (repository: RemoteRepository, context: Context) =
+        NewMemberViewModel(repository, context)
 
     @Provides
     @Singleton

@@ -1,6 +1,7 @@
 package id.koridor50.jesika.data
 
 import id.koridor50.jesika.data.model.LocalCommunity
+import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.ResponseGetuserByBpjs
@@ -48,4 +49,11 @@ interface IApiEndpoint {
         @Query("user_id") idUser: Int,
         @Field("user_id") idUserField: Int
     ) : User
+
+    @FormUrlEncoded
+    @POST("local_community_users")
+    suspend fun addMemberLocalCommunity (
+        @Field("user_id") idUser: Int,
+        @Field("local_community_id") idLocalCommunity: Int
+    ) : LocalCommunityUser
 }

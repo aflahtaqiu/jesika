@@ -14,8 +14,8 @@
             android:id="@+id/action_navigation_home_to_createGroupFragment"
             app:destination="@id/createGroupFragment" />
         <action
-            android:id="@+id/action_navigation_home_to_tambahAnggotaFragment"
-            app:destination="@id/tambahAnggotaFragment" />
+            android:id="@+id/action_navigation_home_to_newMemberFragment"
+            app:destination="@id/newMemberFragment" />
     </fragment>
 
     <fragment
@@ -45,11 +45,6 @@
         android:label="create_group_fragment"
         tools:layout="@layout/create_group_fragment" />
     <fragment
-        android:id="@+id/tambahAnggotaFragment"
-        android:name="id.koridor50.jesika.ui.tambah_anggota.TambahAnggotaFragment"
-        android:label="tambah_anggota_fragment"
-        tools:layout="@layout/tambah_anggota_fragment" />
-    <fragment
         android:id="@+id/memberListFragment"
         android:name="id.koridor50.jesika.ui.member_list.MemberListFragment"
         android:label="member_list_fragment"
@@ -72,4 +67,9 @@
             android:name="idVoucher"
             app:argType="integer" />
     </fragment>
+    <fragment
+        android:id="@+id/newMemberFragment"
+        android:name="id.koridor50.jesika.ui.new_member.NewMemberFragment"
+        android:label="new_member_fragment"
+        tools:layout="@layout/new_member_fragment" />
 </navigation>

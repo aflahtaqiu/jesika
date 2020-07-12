@@ -11,10 +11,9 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
+import id.koridor50.jesika.common.PrefKey
 import id.koridor50.jesika.databinding.LoginFragmentBinding
 import id.koridor50.jesika.utils.savePref
-import id.koridor50.jesika.utils.savePrefObj
-import kotlinx.android.synthetic.main.login_fragment.*
 import javax.inject.Inject
 
 class LoginFragment : Fragment() {
@@ -47,6 +46,6 @@ class LoginFragment : Fragment() {
     }
 
     private fun saveToSp(id: Int) {
-        requireContext().savePref("userLoggedInId", id)
+        requireContext().savePref(PrefKey.USERIDPREFKEY, id)
     }
 }

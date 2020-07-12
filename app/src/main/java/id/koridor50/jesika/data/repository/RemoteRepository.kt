@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.koridor50.jesika.data.IApiEndpoint
 import id.koridor50.jesika.data.model.LocalCommunity
+import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.Result
@@ -103,6 +104,19 @@ class RemoteRepository @Inject constructor(
         withContext(ioDispatcher) {
             try {
                 val successResponse = apiEndpoint.checkoutVoucher(idVoucher, idUser, idUser)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
+
+    suspend fun addMemberLocalCommunity (idUser: Int, idLocalCommunity: Int) : LiveData<Result<LocalCommunityUser>> {
+        val liveData = MutableLiveData<Result<LocalCommunityUser>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.addMemberLocalCommunity(idUser, idLocalCommunity)
                 liveData.postValue(Result.Success(successResponse))
             } catch (e:Exception) {
                 liveData.postValue(Result.Error(e.localizedMessage))

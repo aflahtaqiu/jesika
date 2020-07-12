@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import id.koridor50.jesika.common.PrefKey
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.Result
@@ -20,7 +21,7 @@ class ProfileViewModel @Inject constructor(private val repository: RemoteReposit
 
     init {
 
-        val idUser = context.getPrefInt("userLoggedInId")
+        val idUser = context.getPrefInt(PrefKey.USERIDPREFKEY)
 
         viewModelScope.launch {
             when(val result = repository.getUserDetail(idUser).value) {
