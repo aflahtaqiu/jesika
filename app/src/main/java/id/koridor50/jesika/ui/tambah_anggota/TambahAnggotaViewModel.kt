@@ -5,5 +5,5 @@ import id.koridor50.jesika.data.repository.RemoteRepository
 import javax.inject.Inject
 
 class TambahAnggotaViewModel @Inject constructor(private val repository: RemoteRepository): ViewModel() {
-    // TODO: Implement the ViewModel
+
 }

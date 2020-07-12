@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import id.koridor50.jesika.data.IApiEndpoint
 import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.User
+import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -61,6 +62,20 @@ class RemoteRepository @Inject constructor(
         withContext(ioDispatcher) {
             try {
                 val successResponse = apiEndpoint.postLocalCommunity(coorUserId, listIdMember, name)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
+
+    suspend fun getVouchers () :
+            LiveData<Result<List<Voucher>>> {
+        val liveData = MutableLiveData<Result<List<Voucher>>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.getVouchers()
                 liveData.postValue(Result.Success(successResponse))
             } catch (e:Exception) {
                 liveData.postValue(Result.Error(e.localizedMessage))

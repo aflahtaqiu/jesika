@@ -2,6 +2,7 @@ package id.koridor50.jesika.data
 
 import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.User
+import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.ResponseGetuserByBpjs
 import retrofit2.http.*
 
@@ -31,4 +32,8 @@ interface IApiEndpoint {
         @Field("list_members") listIdMember: String,
         @Field("name") name: String
     ) : LocalCommunity
+
+    @GET("vouchers")
+    suspend fun getVouchers() : List<Voucher>
+
 }
