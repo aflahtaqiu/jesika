@@ -100,7 +100,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideRedeemPromoViewModel (repository: RemoteRepository) = RedeemPromoViewModel(repository)
+    fun provideRedeemPromoViewModel (repository: RemoteRepository,  context: Context) =
+        RedeemPromoViewModel(repository, context)
 
     @Provides
     @Singleton

@@ -36,4 +36,16 @@ interface IApiEndpoint {
     @GET("vouchers")
     suspend fun getVouchers() : List<Voucher>
 
+    @GET("vouchers/{id})")
+    suspend fun getVoucherById (
+        @Path("id") id: Int
+    ) : Voucher
+
+    @FormUrlEncoded
+    @POST("vouchers/{idVoucher}/checkout")
+    suspend fun checkoutVoucher (
+        @Path("idVoucher") idVoucher : Int,
+        @Query("user_id") idUser: Int,
+        @Field("user_id") idUserField: Int
+    ) : User
 }

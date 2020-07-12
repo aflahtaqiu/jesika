@@ -83,4 +83,32 @@ class RemoteRepository @Inject constructor(
         }
         return liveData
     }
+
+    suspend fun getVoucherById (idVoucher: Int) :
+            LiveData<Result<Voucher>> {
+        val liveData = MutableLiveData<Result<Voucher>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.getVoucherById(idVoucher)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
+
+    suspend fun checkoutVoucher (idVoucher: Int, idUser: Int) : LiveData<Result<User>> {
+        val liveData = MutableLiveData<Result<User>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.checkoutVoucher(idVoucher, idUser, idUser)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
 }
+

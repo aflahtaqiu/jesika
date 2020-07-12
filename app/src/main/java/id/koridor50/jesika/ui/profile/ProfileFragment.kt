@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
+import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.databinding.ProfileFragmentBinding
 import javax.inject.Inject
 
@@ -50,5 +51,9 @@ class ProfileFragment : Fragment() {
 
     fun moveVoucherList () {
         findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToVoucherListFragment())
+    }
+
+    fun moveRedeemVoucher (idVoucher: Int) {
+        findNavController().navigate(ProfileFragmentDirections.actionProfileFragmentToRedeemPromoFragment(idVoucher))
     }
 }

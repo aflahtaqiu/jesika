@@ -35,6 +35,9 @@
         <action
             android:id="@+id/action_profileFragment_to_voucherListFragment"
             app:destination="@id/voucherListFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_redeemPromoFragment"
+            app:destination="@id/redeemPromoFragment" />
     </fragment>
     <fragment
         android:id="@+id/createGroupFragment"
@@ -64,5 +67,9 @@
         android:id="@+id/redeemPromoFragment"
         android:name="id.koridor50.jesika.ui.redeem_promo.RedeemPromoFragment"
         android:label="redeem_promo_fragment"
-        tools:layout="@layout/redeem_promo_fragment" />
+        tools:layout="@layout/redeem_promo_fragment" >
+        <argument
+            android:name="idVoucher"
+            app:argType="integer" />
+    </fragment>
 </navigation>
