@@ -9,5 +9,7 @@ data class User (
     val poins: Double,
     @SerializedName("phone_number") val phoneNumber: String,
     val password: String,
-    val email: String
+    val email: String,
+    @SerializedName("tagihan_bayar") val isLunas: Boolean,
+    @SerializedName("local_community") val localCommunity: LocalCommunity
 )

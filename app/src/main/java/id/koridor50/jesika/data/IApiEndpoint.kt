@@ -1,16 +1,34 @@
 package id.koridor50.jesika.data
 
+import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.User
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import id.koridor50.jesika.data.model.response.ResponseGetuserByBpjs
+import retrofit2.http.*
 
 interface IApiEndpoint {
 
     @FormUrlEncoded
     @POST("users/login")
     suspend fun login(
-        @Field("email") email:String,
+        @Field("email") email: String,
         @Field("password") password: String
     ) : User
+
+    @GET("users/{id}")
+    suspend fun getUserDetail (
+        @Path("id") idUser: Int
+    ) : User
+
+    @GET("users")
+    suspend fun getUserByNoBpjs(
+        @Query("bpjs_number") bpjsNumber: Int
+    ) : ResponseGetuserByBpjs
+
+    @FormUrlEncoded
+    @POST("local_communities")
+    suspend fun postLocalCommunity (
+        @Field("user_id") coorUserId: Int,
+        @Field("list_members") listIdMember: String,
+        @Field("name") name: String
+    ) : LocalCommunity
 }

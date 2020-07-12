@@ -29,7 +29,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/materialCardView2"
+        android:id="@+id/cvCreateGroup"
         android:layout_width="161dp"
         android:layout_height="141dp"
         android:layout_marginStart="32dp"
@@ -47,12 +47,13 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvAddNewMember"
         android:layout_width="161dp"
         android:layout_height="141dp"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/materialCardView2"
-        app:layout_constraintTop_toTopOf="@+id/materialCardView2">
+        app:layout_constraintStart_toEndOf="@+id/cvCreateGroup"
+        app:layout_constraintTop_toTopOf="@+id/cvCreateGroup">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -70,8 +71,8 @@
         android:textColor="@color/primaryTextColor"
         android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/materialCardView2"
-        app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+        app:layout_constraintStart_toStartOf="@+id/cvCreateGroup"
+        app:layout_constraintTop_toBottomOf="@+id/cvCreateGroup" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="360dp"

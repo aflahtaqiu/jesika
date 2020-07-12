@@ -1,193 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.create_group.CreateGroupFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="id.koridor50.jesika.ui.create_group.CreateGroupViewModel" />
+
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="354dp"
-        android:background="@color/primaryColor"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/textView9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:text="Buat Group Baru"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toEndOf="@+id/imageView15"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginEnd="56dp"
-            android:layout_marginRight="56dp"
-            android:text="@string/text_buat_group_baru"
-            android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView9"
-            app:layout_constraintTop_toBottomOf="@+id/textView9" />
-
-        <ImageView
-            android:id="@+id/imageView15"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
-            android:layout_marginTop="24dp"
-            android:src="@drawable/ic_baseline_arrow_back_ios_24_white"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="220dp"
-        app:cardBackgroundColor="#F5F6F8"
-        app:cardCornerRadius="24dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        tools:context=".ui.create_group.CreateGroupFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="354dp"
+            android:background="@color/primaryColor"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/textView11"
+                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="40dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginTop="32dp"
-                android:text="Nama Group"
-                android:textColor="@color/primaryTextColor"
+                android:layout_marginTop="60dp"
+                android:text="Buat Group Baru"
+                android:textColor="@android:color/white"
+                android:textSize="24sp"
                 android:textStyle="bold"
+                app:layout_constraintStart_toEndOf="@+id/imageView15"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="56dp"
+                android:layout_marginRight="56dp"
+                android:text="@string/text_buat_group_baru"
+                android:textColor="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/textView9"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <ImageView
+                android:id="@+id/imageView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_baseline_arrow_back_ios_24_white"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                android:layout_width="298dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/box_white_solid_corner"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/textView11">
-
-                <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="@null"
-                    android:hint="Masukkan nama group Anda"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/textView12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Anggota"
-                android:textColor="@color/primaryTextColor"
-                android:textStyle="bold"
-                app:layout_constraintStart_toStartOf="@+id/textView11"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout2"
-                android:layout_width="298dp"
-                android:layout_height="51dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/box_white_solid_corner"
-                app:layout_constraintStart_toStartOf="@+id/textView12"
-                app:layout_constraintTop_toBottomOf="@+id/textView12">
-
-                <EditText
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_marginRight="4dp"
-                    android:layout_marginBottom="4dp"
-                    android:background="@null"
-                    android:hint="Masukkan nomor KIS teman Anda"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/imageView8"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/imageView8"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginRight="8dp"
-                    android:src="@drawable/ic_round_add_box_40"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
-                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-                    app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/materialButton"
-                android:layout_width="302dp"
-                android:layout_height="64dp"
-                android:layout_marginBottom="24dp"
-                android:text="Buat Baru"
-                android:textAllCaps="false"
-                android:textSize="18sp"
-                app:backgroundTint="@color/primaryColor"
-                app:cornerRadius="16dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                tools:listitem="@layout/item_anggota_group_baru"
-                app:layout_constraintBottom_toTopOf="@+id/materialButton"
-                app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
-                app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
-
-
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </com.google.android.material.card.MaterialCardView>
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="220dp"
+            app:cardBackgroundColor="#F5F6F8"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/textView11"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginTop="32dp"
+                    android:text="Nama Group"
+                    android:textColor="@color/primaryTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
+                    android:layout_width="298dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/box_white_solid_corner"
+                    app:layout_constraintStart_toStartOf="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/textView11">
+
+                    <EditText
+                        android:id="@+id/etLocalCommunityName"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@null"
+                        android:hint="Masukkan nama group Anda"
+                        android:text="@={viewmodel.name}"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Anggota"
+                    android:textColor="@color/primaryTextColor"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/textView11"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout2"
+                    android:layout_width="298dp"
+                    android:layout_height="51dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/box_white_solid_corner"
+                    app:layout_constraintStart_toStartOf="@+id/textView12"
+                    app:layout_constraintTop_toBottomOf="@+id/textView12">
+
+                    <EditText
+                        android:id="@+id/etBpjsNumberMember"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginTop="4dp"
+                        android:layout_marginEnd="4dp"
+                        android:layout_marginRight="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:background="@null"
+                        android:hint="Masukkan nomor KIS teman Anda"
+                        android:inputType="number"
+                        android:text="@={viewmodel.bpjsNumber}"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivAddMember"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/ivAddMember"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:onClick="@{() -> viewmodel.addMemberList()}"
+                        android:src="@drawable/ic_round_add_box_40"
+                        app:layout_constraintBottom_toBottomOf="@+id/constraintLayout2"
+                        app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                        app:layout_constraintTop_toTopOf="@+id/constraintLayout2" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCreateNewLocalCommunity"
+                    android:layout_width="302dp"
+                    android:layout_height="64dp"
+                    android:layout_marginBottom="24dp"
+                    android:onClick="@{() -> viewmodel.createLocalCommunity()}"
+                    android:text="Buat Baru"
+                    android:textAllCaps="false"
+                    android:textSize="18sp"
+                    app:backgroundTint="@color/primaryColor"
+                    app:cornerRadius="16dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvCreateMemberList"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    tools:listitem="@layout/item_anggota_group_baru"
+                    app:layout_constraintBottom_toTopOf="@+id/btnCreateNewLocalCommunity"
+                    app:layout_constraintEnd_toEndOf="@+id/constraintLayout2"
+                    app:layout_constraintStart_toStartOf="@+id/constraintLayout2"
+                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout2" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -15,8 +15,13 @@ import id.koridor50.jesika.ui.profile.ProfileViewModel
 import id.koridor50.jesika.ui.redeem_promo.RedeemPromoViewModel
 import id.koridor50.jesika.ui.tambah_anggota.TambahAnggotaViewModel
 import id.koridor50.jesika.ui.voucher_list.VoucherListViewModel
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
@@ -28,10 +33,30 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit =
+    fun provideLoggingInterceptor(): HttpLoggingInterceptor {
+        val loggingInterceptor = HttpLoggingInterceptor()
+        loggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
+        return loggingInterceptor
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkhttpClient(loggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(45L, TimeUnit.SECONDS)
+            .writeTimeout(45L, TimeUnit.SECONDS)
+            .readTimeout(45L, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRetrofit(client: OkHttpClient): Retrofit =
         Retrofit.Builder()
             .baseUrl("https://jesika-api.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
+            .client(client)
             .build()
 
     @Provides
@@ -40,9 +65,12 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideRemoteRepository (apiEndpoint: IApiEndpoint) =
-        RemoteRepository(apiEndpoint)
+    fun getIoDispatcher() = Dispatchers.IO
 
+    @Provides
+    @Singleton
+    fun provideRemoteRepository (apiEndpoint: IApiEndpoint, ioDispatcher: CoroutineDispatcher) =
+        RemoteRepository(apiEndpoint, ioDispatcher)
 
     @Provides
     @Singleton
@@ -50,7 +78,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideCreateGroupRoomViewModel (repository: RemoteRepository) = CreateGroupViewModel(repository)
+    fun provideCreateGroupRoomViewModel (repository: RemoteRepository, context: Context) =
+        CreateGroupViewModel(repository, context)
 
     @Provides
     @Singleton
@@ -66,7 +95,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideProfileViewModel (repository: RemoteRepository) = ProfileViewModel(repository)
+    fun provideProfileViewModel (repository: RemoteRepository, context: Context) =
+        ProfileViewModel(repository, context)
 
     @Provides
     @Singleton
