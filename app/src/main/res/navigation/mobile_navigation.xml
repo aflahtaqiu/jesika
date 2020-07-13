@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_navigation_home_to_newMemberFragment"
             app:destination="@id/newMemberFragment" />
+        <action
+            android:id="@+id/action_navigation_home_to_chatRoomFragment"
+            app:destination="@id/chatRoomFragment" />
     </fragment>
 
     <fragment

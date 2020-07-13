@@ -38,6 +38,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.fragment = this
+
         viewModel.localCommunityLiveData.observe(viewLifecycleOwner, Observer {
             binding.localCommunity = it
         })
@@ -48,5 +50,9 @@ class HomeFragment : Fragment() {
 
         cvCreateGroup.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToCreateGroupFragment()) }
         cvAddNewMember.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNewMemberFragment()) }
+    }
+
+    fun moveToChatRoom () {
+        findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToChatRoomFragment())
     }
 }

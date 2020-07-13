@@ -24,7 +24,7 @@ class MemberListViewModel @Inject constructor(private val repository: RemoteRepo
 
     init {
         viewModelScope.launch {
-            when(val result = repository.getLocalCommunityMembers(idLocalCommunity).value) {
+            when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
                     membersLiveData.value = result.data
                 }

@@ -74,7 +74,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideChatRoomViewModel (repository: RemoteRepository) = ChatRoomViewModel(repository)
+    fun provideChatRoomViewModel (repository: RemoteRepository, context: Context) =
+        ChatRoomViewModel(repository, context)
 
     @Provides
     @Singleton

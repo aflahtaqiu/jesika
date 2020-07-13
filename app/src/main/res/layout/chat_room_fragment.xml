@@ -4,6 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <variable
+            name="localCommunityName"
+            type="String" />
         <variable
             name="fragment"
             type="id.koridor50.jesika.ui.chat_room.ChatRoomFragment" />
@@ -38,7 +42,7 @@
                 android:id="@+id/textView61"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Najat's Family"
+                android:text="@{localCommunityName}"
                 android:textColor="@android:color/white"
                 android:textSize="18sp"
                 android:textStyle="bold"

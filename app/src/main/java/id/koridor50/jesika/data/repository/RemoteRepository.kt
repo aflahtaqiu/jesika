@@ -125,7 +125,7 @@ class RemoteRepository @Inject constructor(
         return liveData
     }
 
-    suspend fun getLocalCommunityMembers (idLocalCommunity: Int) : LiveData<Result<LocalCommunity>> {
+    suspend fun getLocalCommunity (idLocalCommunity: Int) : LiveData<Result<LocalCommunity>> {
         val liveData = MutableLiveData<Result<LocalCommunity>>()
         withContext(ioDispatcher) {
             try {

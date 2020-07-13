@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="fragment"
+            type="id.koridor50.jesika.ui.home.HomeFragment" />
+
+        <variable
             name="localCommunity"
             type="id.koridor50.jesika.data.model.LocalCommunity" />
 
@@ -88,6 +92,7 @@
             android:layout_width="360dp"
             android:layout_height="140dp"
             android:layout_marginTop="24dp"
+            android:onClick="@{() -> fragment.moveToChatRoom()}"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

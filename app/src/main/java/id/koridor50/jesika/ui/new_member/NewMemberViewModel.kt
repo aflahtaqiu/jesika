@@ -19,8 +19,11 @@ import javax.inject.Inject
 class NewMemberViewModel @Inject constructor(private val repository: RemoteRepository,
                                              private val context: Context
 ): ViewModel() {
+
     var newMemberLiveData : MutableLiveData<User> = MutableLiveData()
     var localCommunityLiveData: MutableLiveData<LocalCommunity> = MutableLiveData()
+
+    var isSuccessLiveData : MutableLiveData<Boolean> = MutableLiveData()
     var errorsLiveData : MutableLiveData<String> = MutableLiveData()
 
     var bpjsNumber = ObservableField<String>("")
@@ -29,7 +32,7 @@ class NewMemberViewModel @Inject constructor(private val repository: RemoteRepos
 
     init {
         viewModelScope.launch {
-            when(val result = repository.getLocalCommunityMembers(idLocalCommunity).value) {
+            when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
                     localCommunityLiveData.value = result.data
                 }
@@ -48,11 +51,11 @@ class NewMemberViewModel @Inject constructor(private val repository: RemoteRepos
                 idLocalCommunity).value) {
 
                 is Result.Success<LocalCommunityUser> -> {
-                    Log.e("lele", "sukses ${result.data.toString()}")
+                    isSuccessLiveData.value = true
                 }
 
                 is Result.Error -> {
-                    Log.e("lele", result.message!!)
+                   isSuccessLiveData.value = false
                 }
             }
         }

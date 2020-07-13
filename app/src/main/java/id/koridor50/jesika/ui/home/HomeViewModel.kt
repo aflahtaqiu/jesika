@@ -1,7 +1,6 @@
 package id.koridor50.jesika.ui.home
 
 import android.content.Context
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -34,7 +33,7 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
                 }
             }
 
-            when(val result = repository.getLocalCommunityMembers(idLocalCommunity).value) {
+            when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
                     localCommunityLiveData.value = result.data
                 }

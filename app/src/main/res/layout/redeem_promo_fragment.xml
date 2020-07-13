@@ -193,7 +193,7 @@
                     android:textAllCaps="false"
                     app:backgroundTint="@color/secondaryDarkColor"
                     app:cornerRadius="16dp"
-                    android:onClick="@{() -> viewmodel.checkoutVoucher()}"
+                    android:onClick="@{() -> fragment.showConfirmationDialog()}"
                     android:text='@{String.format("Redeem Promo (%s poin)", String.valueOf(voucher.poin))}'
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

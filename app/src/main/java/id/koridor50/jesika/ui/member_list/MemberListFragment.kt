@@ -38,6 +38,7 @@ class MemberListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         adapter = MemberListAdapter()
+        binding.fragment = this
 
         binding.rvMemberList.adapter = adapter
         binding.rvMemberList.layoutManager = LinearLayoutManager(context)
