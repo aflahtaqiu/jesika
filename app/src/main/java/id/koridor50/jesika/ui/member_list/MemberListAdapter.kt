@@ -8,7 +8,7 @@ import id.koridor50.jesika.R
 import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.databinding.ItemMemberListBinding
 
-class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MemberListViewHolder>() {
+class MemberListAdapter constructor(val callback: MemberListAdapterCallback) : RecyclerView.Adapter<MemberListAdapter.MemberListViewHolder>() {
 
     inner class MemberListViewHolder (val binding: ItemMemberListBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -30,6 +30,8 @@ class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MemberListViewH
     override fun onBindViewHolder(holder: MemberListViewHolder, position: Int) {
         val member = items[position]
         holder.bind(member)
+
+        holder.binding.tvRemove.setOnClickListener { callback.onRemoveClicked(member.id, member.user.name) }
     }
 
     fun addItems (_items: List<LocalCommunityUser>) {
@@ -38,5 +40,9 @@ class MemberListAdapter : RecyclerView.Adapter<MemberListAdapter.MemberListViewH
         items.addAll(_items)
 
         notifyDataSetChanged()
+    }
+
+    interface MemberListAdapterCallback {
+        fun onRemoveClicked(idUser: Int, removedMemberName: String)
     }
 }

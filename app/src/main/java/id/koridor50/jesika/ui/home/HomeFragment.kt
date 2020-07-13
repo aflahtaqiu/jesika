@@ -52,6 +52,11 @@ class HomeFragment : Fragment() {
         cvAddNewMember.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNewMemberFragment()) }
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.getLocalCommunityData()
+    }
+
     fun moveToChatRoom () {
         findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToChatRoomFragment())
     }

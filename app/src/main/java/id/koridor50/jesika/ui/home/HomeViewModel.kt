@@ -18,11 +18,15 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
     var userLiveData : MutableLiveData<User> = MutableLiveData()
     var localCommunityLiveData : MutableLiveData<LocalCommunity> = MutableLiveData()
 
+    val idLocalCommunity  = context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY)
+    val idLoggedInUser = context.getPrefInt(PrefKey.USERIDPREFKEY)
+
     init {
+        getUserData()
+        getLocalCommunityData()
+    }
 
-        val idLocalCommunity  = context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY)
-        val idLoggedInUser = context.getPrefInt(PrefKey.USERIDPREFKEY)
-
+    fun getUserData () {
         viewModelScope.launch {
             when(val result = repository.getUserDetail(idLoggedInUser).value) {
                 is Result.Success<User> -> {
@@ -33,6 +37,12 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
                 }
             }
 
+
+        }
+    }
+
+    fun getLocalCommunityData () {
+        viewModelScope.launch {
             when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
                     localCommunityLiveData.value = result.data

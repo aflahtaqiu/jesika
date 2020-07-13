@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import id.koridor50.jesika.common.PrefKey
 import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.User
+import id.koridor50.jesika.data.model.response.ResponseRemoveMember
 import id.koridor50.jesika.data.model.response.Result
 import id.koridor50.jesika.data.repository.RemoteRepository
 import id.koridor50.jesika.utils.getPrefInt
@@ -21,8 +22,23 @@ class MemberListViewModel @Inject constructor(private val repository: RemoteRepo
 
     var membersLiveData : MutableLiveData<LocalCommunity> = MutableLiveData()
     var userLiveData : MutableLiveData<User> = MutableLiveData()
+    var isRemovedMemberLiveData : MutableLiveData<Boolean> = MutableLiveData()
 
     init {
+        viewModelScope.launch {
+            when (val result = repository.getUserDetail(idUser).value) {
+                is Result.Success<User> -> {
+                    userLiveData.value = result.data
+                }
+                is Result.Error -> {
+
+                }
+            }
+        }
+        getMemberList()
+    }
+
+    fun getMemberList () {
         viewModelScope.launch {
             when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
@@ -32,13 +48,18 @@ class MemberListViewModel @Inject constructor(private val repository: RemoteRepo
 
                 }
             }
+        }
+    }
 
-            when (val result = repository.getUserDetail(idUser).value) {
-                is Result.Success<User> -> {
-                    userLiveData.value = result.data
+    fun removeLocalCommunityMember (idUser: Int) {
+        viewModelScope.launch {
+            when(val result = repository.removeLocalCommunityMember(idUser).value) {
+                is Result.Success<ResponseRemoveMember> -> {
+                    isRemovedMemberLiveData.value = true
+                    getMemberList()
                 }
                 is Result.Error -> {
-
+                    isRemovedMemberLiveData.value = false
                 }
             }
         }
