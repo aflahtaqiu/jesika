@@ -51,6 +51,10 @@ class NewMemberFragment : Fragment() {
         viewModel.newMemberLiveData.observe(viewLifecycleOwner, Observer {
             adapter.addItems(it)
         })
+
+        viewModel.localCommunityLiveData.observe(viewLifecycleOwner, Observer {
+            binding.localCommunity = it
+        })
     }
 
     fun popBackStack () {

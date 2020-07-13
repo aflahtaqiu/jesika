@@ -12,6 +12,10 @@
             name="fragment"
             type="id.koridor50.jesika.ui.new_member.NewMemberFragment" />
 
+        <variable
+            name="localCommunity"
+            type="id.koridor50.jesika.data.model.LocalCommunity" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,8 +49,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="56dp"
-                android:layout_marginRight="56dp"
-                android:text="Tambahkan anggota baru untuk Najat’s Familiy dengan menambahkan nomor Kartu Indonesia Sehat"
+                android:text='@{String.format("Tambahkan anggota baru untuk %s dengan menambahkan nomor Kartu Indonesia Sehat ", localCommunity.name)}'
                 android:textColor="@android:color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/textView9"

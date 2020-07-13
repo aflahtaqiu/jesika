@@ -83,7 +83,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideHomeViewModel (repository: RemoteRepository) = HomeViewModel(repository)
+    fun provideHomeViewModel (repository: RemoteRepository, context: Context) =
+        HomeViewModel(repository, context)
 
     @Provides
     @Singleton

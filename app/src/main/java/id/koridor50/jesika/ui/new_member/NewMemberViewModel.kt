@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import id.koridor50.jesika.common.PrefKey
+import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.response.Result
@@ -19,11 +20,26 @@ class NewMemberViewModel @Inject constructor(private val repository: RemoteRepos
                                              private val context: Context
 ): ViewModel() {
     var newMemberLiveData : MutableLiveData<User> = MutableLiveData()
+    var localCommunityLiveData: MutableLiveData<LocalCommunity> = MutableLiveData()
     var errorsLiveData : MutableLiveData<String> = MutableLiveData()
 
     var bpjsNumber = ObservableField<String>("")
 
     val idLocalCommunity  = context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY)
+
+    init {
+        viewModelScope.launch {
+            when(val result = repository.getLocalCommunityMembers(idLocalCommunity).value) {
+                is Result.Success<LocalCommunity> -> {
+                    localCommunityLiveData.value = result.data
+                }
+
+                is Result.Error -> {
+                    Log.e("lele", result.message!!)
+                }
+            }
+        }
+    }
 
     fun storeNewMember () {
 
