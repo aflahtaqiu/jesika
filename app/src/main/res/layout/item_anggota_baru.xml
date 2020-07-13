@@ -34,8 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="32dp"
             android:text="1. "
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,7 +45,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginLeft="4dp"
             android:text="Nomor Kartu"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@+id/textView17"
@@ -67,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="Alamat"
+            android:text="No Telp"
             android:textSize="12sp"
             app:layout_constraintStart_toStartOf="@+id/textView19"
             app:layout_constraintTop_toBottomOf="@+id/textView29" />
@@ -83,21 +81,10 @@
             app:layout_constraintTop_toBottomOf="@+id/textView30" />
 
         <TextView
-            android:id="@+id/textView22"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="NIK"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="@+id/textView21"
-            app:layout_constraintTop_toBottomOf="@+id/textView31" />
-
-        <TextView
             android:id="@+id/textView23"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginLeft="24dp"
             android:text=":"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/textView18"
@@ -135,23 +122,13 @@
             app:layout_constraintTop_toTopOf="@+id/textView21" />
 
         <TextView
-            android:id="@+id/textView27"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=":"
-            android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/textView22"
-            app:layout_constraintStart_toStartOf="@+id/textView26"
-            app:layout_constraintTop_toTopOf="@+id/textView22" />
-
-        <TextView
             android:id="@+id/tvNoBpjs"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
             android:text="@{String.valueOf(user.bpjsNumber)}"
             android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/textView23"
             app:layout_constraintTop_toTopOf="@+id/textView23" />
 
@@ -170,10 +147,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
+            android:text="@{String.valueOf(user.phoneNumber)}"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="@+id/textView29"
             app:layout_constraintTop_toTopOf="@+id/textView25" />
 
@@ -182,20 +158,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="4dp"
-            android:layout_marginRight="4dp"
             android:text="@{user.birthDate}"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/textView30"
             app:layout_constraintTop_toTopOf="@+id/textView26" />
 
-        <TextView
-            android:id="@+id/textView32"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/textView31"
-            app:layout_constraintTop_toTopOf="@+id/textView27" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -31,6 +31,8 @@ class CreateMemberListAdapter :
     override fun onBindViewHolder(holder: CreateMemberListViewHolder, position: Int) {
         val member = members[position]
         holder.bind(member)
+
+        holder.binding.tvNumber.text = "${position+1}. "
     }
 
     fun addItems (_member: User) {
