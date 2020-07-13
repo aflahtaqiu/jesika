@@ -28,7 +28,9 @@ import com.tyagiabhinav.dialogflowchatlibrary.templateutil.OnClickCallback
 import com.tyagiabhinav.dialogflowchatlibrary.templateutil.ReturnMessage
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
+import id.koridor50.jesika.common.PrefKey
 import id.koridor50.jesika.databinding.ChatRoomFragmentBinding
+import id.koridor50.jesika.utils.getPrefInt
 import kotlinx.android.synthetic.main.chat_room_fragment.*
 import kotlinx.android.synthetic.main.chat_room_fragment.view.*
 import java.io.IOException
@@ -55,7 +57,9 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
     lateinit var dialogflowTaskRunner: TaskRunner
     private var isProgressRunning = false
     lateinit var queryEditText: EditText
-    var localCommunityId: Int = 1
+    val localCommunityId: Int by lazy {
+        requireContext().getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY)
+    }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -67,7 +71,6 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.chat_room_fragment, container, false)
-        localCommunityId = 1
 
         settingChatbot()
         initChatBot(binding.root)
