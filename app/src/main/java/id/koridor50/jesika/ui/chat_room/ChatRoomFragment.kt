@@ -73,8 +73,6 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.chat_room_fragment, container, false)
 
-        settingChatbot()
-        initChatBot(binding.root)
         return binding.root
     }
 
@@ -120,6 +118,9 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fragment = this
+
+        settingChatbot()
+        initChatBot(binding.root)
     }
 
     fun settingChatbot() {
