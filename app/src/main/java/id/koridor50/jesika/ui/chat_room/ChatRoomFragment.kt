@@ -121,6 +121,9 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
 
         settingChatbot()
         initChatBot(binding.root)
+        viewModel.localCommunityNameLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
+            binding.localCommunityName = it
+        })
     }
 
     fun settingChatbot() {

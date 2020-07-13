@@ -7,6 +7,7 @@ import id.koridor50.jesika.data.model.LocalCommunity
 import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
+import id.koridor50.jesika.data.model.response.ResponseRemoveMember
 import id.koridor50.jesika.data.model.response.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
@@ -125,11 +126,24 @@ class RemoteRepository @Inject constructor(
         return liveData
     }
 
-    suspend fun getLocalCommunityMembers (idLocalCommunity: Int) : LiveData<Result<LocalCommunity>> {
+    suspend fun getLocalCommunity (idLocalCommunity: Int) : LiveData<Result<LocalCommunity>> {
         val liveData = MutableLiveData<Result<LocalCommunity>>()
         withContext(ioDispatcher) {
             try {
                 val successResponse = apiEndpoint.getLocalCommunityMembers(idLocalCommunity)
+                liveData.postValue(Result.Success(successResponse))
+            } catch (e:Exception) {
+                liveData.postValue(Result.Error(e.localizedMessage))
+            }
+        }
+        return liveData
+    }
+
+    suspend fun removeLocalCommunityMember (idUser: Int) : LiveData<Result<ResponseRemoveMember>> {
+        val liveData = MutableLiveData<Result<ResponseRemoveMember>>()
+        withContext(ioDispatcher) {
+            try {
+                val successResponse = apiEndpoint.removeLocalCommunityMember(idUser)
                 liveData.postValue(Result.Success(successResponse))
             } catch (e:Exception) {
                 liveData.postValue(Result.Error(e.localizedMessage))

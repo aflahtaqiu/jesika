@@ -5,6 +5,7 @@ import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.data.model.User
 import id.koridor50.jesika.data.model.Voucher
 import id.koridor50.jesika.data.model.response.ResponseGetuserByBpjs
+import id.koridor50.jesika.data.model.response.ResponseRemoveMember
 import retrofit2.http.*
 
 interface IApiEndpoint {
@@ -61,4 +62,9 @@ interface IApiEndpoint {
     suspend fun getLocalCommunityMembers (
         @Path("idLocalCommunity") idLocalCommunity: Int
     ) : LocalCommunity
+
+    @DELETE("local_community_users/{idUser}")
+    suspend fun removeLocalCommunityMember (
+        @Path("idUser") idUser: Int
+    ) : ResponseRemoveMember
 }

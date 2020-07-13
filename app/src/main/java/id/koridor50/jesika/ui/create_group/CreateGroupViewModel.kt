@@ -22,8 +22,10 @@ class CreateGroupViewModel @Inject constructor(private val repository: RemoteRep
     var name = ObservableField<String>("")
     var bpjsNumber = ObservableField<String>("")
 
+    var localCommunityNameLiveData : MutableLiveData<String> = MutableLiveData()
     var memberLiveData : MutableLiveData<User> = MutableLiveData()
     var errorsLiveData : MutableLiveData<String> = MutableLiveData()
+    var isSuccessLiveData : MutableLiveData<Boolean> = MutableLiveData()
 
     var selectedMembers = mutableListOf<Int>()
 
@@ -49,11 +51,13 @@ class CreateGroupViewModel @Inject constructor(private val repository: RemoteRep
         viewModelScope.launch {
             when(val result = repository.postNewLocalCommunity(coorUserId, listMembers, name.get()!!).value) {
                 is Result.Success<LocalCommunity> -> {
-                    Log.e("lele", "sukses membuat grup ${result.data.name}")
+                    isSuccessLiveData.value = true
+                    localCommunityNameLiveData.value = result.data.name
                     context.savePref(PrefKey.LOCALCOMMUNITYIDPREFKEY, result.data.id)
                 }
 
                 is Result.Error -> {
+                    isSuccessLiveData.value = false
                     errorsLiveData.value = result.message
                 }
             }

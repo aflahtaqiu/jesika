@@ -1,7 +1,6 @@
 package id.koridor50.jesika.ui.redeem_promo
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -20,9 +19,12 @@ class RedeemPromoViewModel @Inject constructor(private val repository: RemoteRep
     var userLiveData : MutableLiveData<User> = MutableLiveData()
     var voucherLiveData : MutableLiveData<Voucher> = MutableLiveData()
 
-    init {
+    var isSuccessCheckoutLiveData : MutableLiveData<Boolean> = MutableLiveData()
+    var messageLiveData : MutableLiveData<String> = MutableLiveData()
 
+    init {
         val idUser = context.getPrefInt(PrefKey.USERIDPREFKEY)
+        isSuccessCheckoutLiveData.value = false
 
         viewModelScope.launch {
             when(val result = repository.getUserDetail(idUser).value) {
@@ -41,6 +43,7 @@ class RedeemPromoViewModel @Inject constructor(private val repository: RemoteRep
             when(val result = repository.getVoucherById(idVoucher).value) {
                 is Result.Success<Voucher> -> {
                     voucherLiveData.value = result.data
+                    messageLiveData.value = "Anda yakin ingin menggunakan voucher ini? Poin anda akan berkurang sebesar ${result.data.poin}"
                 }
                 is Result.Error -> {
 
@@ -53,14 +56,13 @@ class RedeemPromoViewModel @Inject constructor(private val repository: RemoteRep
         val idUser:Int = userLiveData.value!!.id
         val idVoucher = voucherLiveData.value!!.id
 
-
         viewModelScope.launch {
             when(val result = repository.checkoutVoucher(idVoucher, idUser).value) {
                 is Result.Success<User> -> {
-
+                    isSuccessCheckoutLiveData.value = true
                 }
                 is Result.Error -> {
-                    Log.e("lele", result.message!!)
+                    isSuccessCheckoutLiveData.value = false
                 }
             }
         }
