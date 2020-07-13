@@ -9,7 +9,7 @@ import id.koridor50.jesika.data.model.LocalCommunityUser
 import id.koridor50.jesika.databinding.ItemChatbotBinding
 import id.koridor50.jesika.databinding.ItemMemberListBinding
 
-class RecommendChatAdapter constructor(callback: RecommendChatCallback): RecyclerView.Adapter<RecommendChatAdapter.RecommendChatViewHolder>() {
+class RecommendChatAdapter constructor(val callback: RecommendChatCallback): RecyclerView.Adapter<RecommendChatAdapter.RecommendChatViewHolder>() {
 
     inner class RecommendChatViewHolder (val binding: ItemChatbotBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -31,6 +31,7 @@ class RecommendChatAdapter constructor(callback: RecommendChatCallback): Recycle
     override fun onBindViewHolder(holder: RecommendChatViewHolder, position: Int) {
         val member = items[position]
         holder.bind(member)
+        holder.binding.root.setOnClickListener { callback.onRecomendChatClicked(member) }
     }
 
     fun addItems (_items: List<String>) {

@@ -120,6 +120,7 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback, Recommend
 
         binding.fragment = this
         adapter = RecommendChatAdapter(this)
+        adapter.addItems(listOf("List Anggota", "Rekap Bayar", "Set Reminder", "Tagihan Saat Ini"))
 
         settingChatbot()
         initChatBot(binding.root)
@@ -386,6 +387,6 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback, Recommend
     }
 
     override fun onRecomendChatClicked(string: String) {
-        TODO("Not yet implemented")
+        send(string)
     }
 }
