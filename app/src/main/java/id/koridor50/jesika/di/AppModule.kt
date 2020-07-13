@@ -89,7 +89,8 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideLoginViewModel (repository: RemoteRepository) = LoginViewModel(repository)
+    fun provideLoginViewModel (repository: RemoteRepository, context: Context) =
+        LoginViewModel(repository, context)
 
     @Provides
     @Singleton

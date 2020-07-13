@@ -5,6 +5,8 @@
 
     <data>
 
+        <import type="android.view.View"/>
+
         <variable
             name="fragment"
             type="id.koridor50.jesika.ui.home.HomeFragment" />
@@ -16,6 +18,10 @@
         <variable
             name="user"
             type="id.koridor50.jesika.data.model.User" />
+
+        <variable
+            name="viewModel"
+            type="id.koridor50.jesika.ui.home.HomeViewModel" />
 
     </data>
 
@@ -88,11 +94,47 @@
             app:layout_constraintStart_toStartOf="@+id/cvCreateGroup"
             app:layout_constraintTop_toBottomOf="@+id/cvCreateGroup" />
 
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="360dp"
+            android:layout_height="140dp"
+            android:layout_marginTop="24dp"
+            android:visibility="@{viewModel.isHaveLocalCommunityLiveData() ?  View.GONE : View.VISIBLE}"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:cardBackgroundColor="@android:color/darker_gray">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingStart="24dp"
+                    android:paddingEnd="24dp"
+                    android:text="Anda belum memiliki Local Community saat ini"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.505" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
         <com.google.android.material.card.MaterialCardView
             android:layout_width="360dp"
             android:layout_height="140dp"
             android:layout_marginTop="24dp"
             android:onClick="@{() -> fragment.moveToChatRoom()}"
+            android:visibility="@{viewModel.isHaveLocalCommunityLiveData() ? View.VISIBLE : View.GONE}"
             app:cardCornerRadius="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

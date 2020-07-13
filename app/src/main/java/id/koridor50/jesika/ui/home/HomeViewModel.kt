@@ -1,6 +1,7 @@
 package id.koridor50.jesika.ui.home
 
 import android.content.Context
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -18,12 +19,16 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
     var userLiveData : MutableLiveData<User> = MutableLiveData()
     var localCommunityLiveData : MutableLiveData<LocalCommunity> = MutableLiveData()
 
+    var isHaveLocalCommunityLiveData : MutableLiveData<Boolean> = MutableLiveData()
+
     val idLocalCommunity  = context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY)
     val idLoggedInUser = context.getPrefInt(PrefKey.USERIDPREFKEY)
 
     init {
         getUserData()
         getLocalCommunityData()
+
+        isHaveLocalCommunityLiveData.value = checkIsLocalCommunitySaved()
     }
 
     fun getUserData () {
@@ -36,8 +41,6 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
 
                 }
             }
-
-
         }
     }
 
@@ -53,4 +56,11 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
             }
         }
     }
+
+    fun updateLocalCommunitySavedBool () {
+        isHaveLocalCommunityLiveData.value = checkIsLocalCommunitySaved()
+    }
+
+    fun checkIsLocalCommunitySaved () =
+         !(context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY) == 0 || context.getPrefInt(PrefKey.LOCALCOMMUNITYIDPREFKEY) == -1)
 }

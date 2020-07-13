@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fragment = this
+        binding.viewModel = viewModel
 
         viewModel.localCommunityLiveData.observe(viewLifecycleOwner, Observer {
             binding.localCommunity = it
@@ -55,6 +56,7 @@ class HomeFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         viewModel.getLocalCommunityData()
+        viewModel.updateLocalCommunitySavedBool()
     }
 
     fun moveToChatRoom () {
