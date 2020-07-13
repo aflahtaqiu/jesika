@@ -14,6 +14,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.api.gax.core.FixedCredentialsProvider
 import com.google.auth.oauth2.GoogleCredentials
 import com.google.auth.oauth2.ServiceAccountCredentials
@@ -40,10 +41,11 @@ import java.util.*
 import javax.inject.Inject
 
 
-class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
+class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback, RecommendChatAdapter.RecommendChatCallback {
 
     @Inject lateinit var viewModel: ChatRoomViewModel
     private lateinit var binding: ChatRoomFragmentBinding
+    private lateinit var adapter : RecommendChatAdapter
 
     private val TAG = "ChatRoomFragment"
     private val USER = 10001
@@ -72,7 +74,6 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, R.layout.chat_room_fragment, container, false)
-
         return binding.root
     }
 
@@ -118,12 +119,16 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
         super.onViewCreated(view, savedInstanceState)
 
         binding.fragment = this
+        adapter = RecommendChatAdapter(this)
 
         settingChatbot()
         initChatBot(binding.root)
         viewModel.localCommunityNameLiveData.observe(viewLifecycleOwner, androidx.lifecycle.Observer {
             binding.localCommunityName = it
         })
+
+        binding.rvRecomendChat.adapter = adapter
+        binding.rvRecomendChat.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 
     fun settingChatbot() {
@@ -378,5 +383,9 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
 
     fun popBackStack () {
         findNavController().popBackStack()
+    }
+
+    override fun onRecomendChatClicked(string: String) {
+        TODO("Not yet implemented")
     }
 }

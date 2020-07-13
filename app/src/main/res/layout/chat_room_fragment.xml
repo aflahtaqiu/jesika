@@ -66,11 +66,11 @@
             android:id="@+id/chatScrollView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/layout_chatbox"
+            android:fillViewport="true"
+            app:layout_constraintBottom_toTopOf="@+id/rvRecomendChat"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4"
-            android:fillViewport="true">
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
 
             <LinearLayout
                 android:id="@+id/chatLayout"
@@ -78,6 +78,20 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" />
         </ScrollView>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvRecomendChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toTopOf="@+id/layout_chatbox"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_chatbot"
+            android:layout_marginVertical="16dp">
+
+        </androidx.recyclerview.widget.RecyclerView>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_chatbox"
