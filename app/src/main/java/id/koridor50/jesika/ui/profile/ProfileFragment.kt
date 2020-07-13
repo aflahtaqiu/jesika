@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import id.koridor50.jesika.JesikaApp
 import id.koridor50.jesika.R
 import id.koridor50.jesika.data.model.Voucher
@@ -21,6 +22,7 @@ class ProfileFragment : Fragment() {
 
     @Inject lateinit var viewModel: ProfileViewModel
     private lateinit var binding: ProfileFragmentBinding
+    private lateinit var adapter: UsedVouchersAdapter
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -38,7 +40,12 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        adapter = UsedVouchersAdapter()
         binding.fragment = this
+
+        binding.rvUsedVouchers.adapter = adapter
+        binding.rvUsedVouchers.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
 
         viewModel.userLiveData.observe(viewLifecycleOwner, Observer {
             binding.profile = it
@@ -46,6 +53,10 @@ class ProfileFragment : Fragment() {
 
         viewModel.voucherLiveData.observe(viewLifecycleOwner, Observer {
             binding.voucher = it
+        })
+
+        viewModel.usedVoucherLiveData.observe(viewLifecycleOwner, Observer {
+            adapter.addItems(it)
         })
     }
 

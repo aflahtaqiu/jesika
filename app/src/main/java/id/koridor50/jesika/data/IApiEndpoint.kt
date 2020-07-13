@@ -1,11 +1,9 @@
 package id.koridor50.jesika.data
 
-import id.koridor50.jesika.data.model.LocalCommunity
-import id.koridor50.jesika.data.model.LocalCommunityUser
-import id.koridor50.jesika.data.model.User
-import id.koridor50.jesika.data.model.Voucher
+import id.koridor50.jesika.data.model.*
 import id.koridor50.jesika.data.model.response.ResponseGetuserByBpjs
 import id.koridor50.jesika.data.model.response.ResponseRemoveMember
+import id.koridor50.jesika.data.model.response.ResponseVouchersUsed
 import retrofit2.http.*
 
 interface IApiEndpoint {
@@ -67,4 +65,9 @@ interface IApiEndpoint {
     suspend fun removeLocalCommunityMember (
         @Path("idUser") idUser: Int
     ) : ResponseRemoveMember
+
+    @GET("users_vouchers")
+    suspend fun getUsedVouchers (
+        @Query("user_id") idUser: Int
+    ) : List<UsersVouchers>
 }

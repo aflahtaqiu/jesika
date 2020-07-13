@@ -217,6 +217,32 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
+                    <TextView
+                        android:id="@+id/textView67"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Voucher Terpakai"
+                        android:textColor="@color/primaryTextColor"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/textView37"
+                        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvUsedVouchers"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/textView67"
+                        app:layout_constraintTop_toBottomOf="@+id/textView67"
+
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        tools:listitem="@layout/item_voucher_list" />
+
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="0dp"
                         android:layout_height="64dp"
@@ -234,7 +260,7 @@
                         app:cornerRadius="16dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/materialCardView4"
+                        app:layout_constraintTop_toBottomOf="@+id/rvUsedVouchers"
                         app:strokeColor="@color/colorRedBelumLunasStatus"
                         app:strokeWidth="1dp" />
 
@@ -243,9 +269,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginLeft="16dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
                         android:text="Lihat Voucher Lainnya"
                         android:textColor="@color/primaryColor"
                         android:textSize="16sp"
@@ -261,13 +285,14 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
                         android:layout_marginEnd="24dp"
-                        android:layout_marginRight="24dp"
                         android:scaleType="fitXY"
                         android:onClick="@{() -> fragment.moveVoucherList()}"
                         android:src="@drawable/ic_arrow_right"
                         app:layout_constraintEnd_toEndOf="@+id/textView41"
                         app:layout_constraintStart_toStartOf="@+id/textView41"
                         app:layout_constraintTop_toBottomOf="@+id/textView41" />
+
+
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
