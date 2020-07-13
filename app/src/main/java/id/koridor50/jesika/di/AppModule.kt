@@ -112,6 +112,6 @@ class AppModule (private val app: Application) {
 
     @Provides
     @Singleton
-    fun provideVoucherListViewModel (repository: RemoteRepository) = VoucherListViewModel(repository)
+    fun provideVoucherListViewModel (repository: RemoteRepository, context: Context) = VoucherListViewModel(repository, context)
 
 }

@@ -17,5 +17,6 @@
     <color name="colorRedBelumLunasStatus">#D50000</color>
     <color name="colorRedDarker">#B71C1C</color>
     <color name="colorGreyLine">#D2D2D2</color>
+    <color name="white">#fff</color>
 
 </resources>

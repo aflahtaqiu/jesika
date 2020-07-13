@@ -8,7 +8,8 @@ data class Voucher(
     val name: String,
     val description: String,
     @SerializedName("cost_poin") val poin: Int,
-    @SerializedName("syarat_ketentuan") val termsCondition : String
+    @SerializedName("syarat_ketentuan") val termsCondition : String,
+    val category: Int
 )
 
 data class PhotoUrl(

@@ -58,6 +58,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView42">
 
             <LinearLayout
+                android:id="@+id/ln_cat_1"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_marginEnd="8dp"
@@ -66,6 +67,7 @@
                 android:background="@drawable/bg_circle_solid_blue">
 
                 <TextView
+                    android:id="@+id/tv_cat_1"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -76,6 +78,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ln_cat_2"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_marginEnd="8dp"
@@ -84,6 +87,7 @@
                 android:background="@drawable/bg_circle_stroke_grey">
 
                 <TextView
+                    android:id="@+id/tv_cat_2"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -94,6 +98,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ln_cat_3"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_marginEnd="8dp"
@@ -102,6 +107,7 @@
                 android:background="@drawable/bg_circle_stroke_grey">
 
                 <TextView
+                    android:id="@+id/tv_cat_3"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -112,6 +118,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ln_cat_4"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_marginEnd="8dp"
@@ -120,6 +127,7 @@
                 android:background="@drawable/bg_circle_stroke_grey">
 
                 <TextView
+                    android:id="@+id/tv_cat_4"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -131,12 +139,14 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/ln_cat_5"
                 android:layout_width="0dp"
                 android:layout_height="64dp"
                 android:layout_weight="1"
                 android:background="@drawable/bg_circle_stroke_grey">
 
                 <TextView
+                    android:id="@+id/tv_cat_5"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:gravity="center"
@@ -160,7 +170,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
         <TextView
-            android:id="@+id/textView44"
+            android:id="@+id/tv_user_poins"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="117"

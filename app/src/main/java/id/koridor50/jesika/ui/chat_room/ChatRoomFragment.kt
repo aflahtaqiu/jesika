@@ -10,6 +10,7 @@ import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ScrollView
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -122,8 +123,11 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
     }
 
     fun settingChatbot() {
-        DialogflowCredentialss.getInstance().setInputStream(resources.openRawResource(R.raw.jesika))
-        ChatbotSettings.getInstance().chatbot = ChatbotBuilder().build()
+        DialogflowCredentialss.getInstance().inputStream = resources.openRawResource(R.raw.jesika)
+        ChatbotSettings.getInstance().chatbot = ChatbotBuilder()
+            .setChatBotAvatar(ContextCompat.getDrawable(requireContext(), R.drawable.profile))
+            .setChatUserAvatar(ContextCompat.getDrawable(requireContext(), R.drawable.img_profile))
+            .build()
     }
 
     override fun OnChatbotResponse(response: DetectIntentResponse?) {
@@ -360,8 +364,8 @@ class ChatRoomFragment : Fragment(), ChatbotCallback, OnClickCallback {
     private fun enableDissableChatUI(bool: Boolean) {
         queryEditText.isEnabled = bool
         queryEditText.isClickable = bool
-        sendBtn.isEnabled = bool
-        sendBtn.isClickable = bool
+        view?.sendBtn?.isEnabled = bool
+        view?.sendBtn?.isClickable = bool
     }
 
     fun moveMemberList () {
