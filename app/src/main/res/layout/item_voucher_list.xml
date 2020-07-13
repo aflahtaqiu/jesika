@@ -14,8 +14,7 @@
         android:layout_width="144dp"
         android:layout_height="172dp"
         app:cardCornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="@+id/textView34"
-        app:layout_constraintTop_toBottomOf="@+id/textView34">
+        android:layout_marginHorizontal="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
