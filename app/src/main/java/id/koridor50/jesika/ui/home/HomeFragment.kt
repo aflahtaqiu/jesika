@@ -53,8 +53,8 @@ class HomeFragment : Fragment() {
         cvAddNewMember.setOnClickListener { findNavController().navigate(HomeFragmentDirections.actionNavigationHomeToNewMemberFragment()) }
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onStart() {
+        super.onStart()
         viewModel.getLocalCommunityData()
         viewModel.updateLocalCommunitySavedBool()
     }

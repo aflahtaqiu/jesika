@@ -64,7 +64,7 @@ class NewMemberViewModel @Inject constructor(private val repository: RemoteRepos
     fun getUserIdByBpjsNumber () {
 
         viewModelScope.launch {
-            when(val result = repository.getUserByNoBpjs(bpjsNumber.get()!!.toInt()).value) {
+            when(val result = repository.getUserByNoBpjs(bpjsNumber.get()!!).value) {
                 is Result.Success<User> -> {
                     newMemberLiveData.value = result.data
                 }

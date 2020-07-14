@@ -1,5 +1,6 @@
 package id.koridor50.jesika.data.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import id.koridor50.jesika.data.IApiEndpoint
@@ -43,14 +44,14 @@ class RemoteRepository @Inject constructor(
         return liveData
     }
 
-    suspend fun getUserByNoBpjs (bpjsNumber: Int) : LiveData<Result<User>> {
+    suspend fun getUserByNoBpjs (bpjsNumber: String) : LiveData<Result<User>> {
         val liveData = MutableLiveData<Result<User>>()
         withContext(ioDispatcher) {
             try {
-                val successResponse = apiEndpoint.getUserByNoBpjs(bpjsNumber).items.first()
-                liveData.postValue(Result.Success(successResponse))
+                val successResponse = apiEndpoint.getUserByNoBpjs(bpjsNumber).items
+                liveData.postValue(Result.Success(successResponse.first()))
             } catch (e:Exception) {
-                liveData.postValue(Result.Error(e.localizedMessage))
+                liveData.postValue(Result.Error(e.message))
             }
         }
         return liveData

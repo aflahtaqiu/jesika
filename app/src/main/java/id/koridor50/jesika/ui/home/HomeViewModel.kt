@@ -48,6 +48,7 @@ class HomeViewModel @Inject constructor(private val repository: RemoteRepository
         viewModelScope.launch {
             when(val result = repository.getLocalCommunity(idLocalCommunity).value) {
                 is Result.Success<LocalCommunity> -> {
+                    Log.e("lele", result.data.toString())
                     localCommunityLiveData.value = result.data
                 }
                 is Result.Error -> {

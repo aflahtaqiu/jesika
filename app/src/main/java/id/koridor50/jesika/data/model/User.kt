@@ -21,4 +21,7 @@ data class User (
 
     val aliasName
         get() = name.substring(0,2).capitalize()
+
+    val roundPoin
+        get() = String.format("%.0f", poins)
 }

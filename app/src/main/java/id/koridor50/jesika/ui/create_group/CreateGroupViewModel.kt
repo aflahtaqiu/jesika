@@ -33,12 +33,14 @@ class CreateGroupViewModel @Inject constructor(private val repository: RemoteRep
 
     fun addMemberList () {
         viewModelScope.launch {
-            when(val result = repository.getUserByNoBpjs(bpjsNumber.get()!!.toInt()).value) {
+            when(val result = repository.getUserByNoBpjs(bpjsNumber.get()!!).value) {
                 is Result.Success<User> -> {
+                    Log.e("lele", result.data.toString())
                     selectedMembers.add(result.data.id)
                     memberLiveData.value = result.data
                 }
                 is Result.Error -> {
+                    Log.e("lele", result.message +" dbh")
                     errorsLiveData.value = result.message
                 }
             }

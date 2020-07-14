@@ -56,7 +56,7 @@ class VoucherListFragment : Fragment(), VoucherListAdapter.VoucherListCallback {
         })
 
         viewModel.userLiveData.observe(viewLifecycleOwner, Observer {
-            tv_user_poins.text = it.poins.toString()
+            tv_user_poins.text = it.roundPoin
         })
         onCategoryClickListener()
     }

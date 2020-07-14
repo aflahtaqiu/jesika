@@ -22,7 +22,7 @@ interface IApiEndpoint {
 
     @GET("users")
     suspend fun getUserByNoBpjs(
-        @Query("bpjs_number") bpjsNumber: Int
+        @Query("bpjs_number") bpjsNumber: String
     ) : ResponseGetuserByBpjs
 
     @FormUrlEncoded
